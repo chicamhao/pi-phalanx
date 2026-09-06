@@ -24,11 +24,10 @@ The military-themed subagent architecture built for [Pi](https://pi.dev).
 
 ## How to use
 
-0.1. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
-0.2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
-1. **Copy `.pi/`** into your project root
-3. **Start a Pi session** -> `/phalanx-arrange` -> `/reload`
-4.  the strategos loads automatically and the phalanx handles the rest
+1. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+3. **Copy `.pi/`** into your project root
+4. **Start a Pi session** -> `/phalanx-arrange` -> `/reload`. The strategos loads automatically and the phalanx handles the rest
 
 ## How it works
 
