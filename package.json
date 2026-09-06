@@ -1,6 +1,6 @@
 {
   "name": "pi-phalanx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Phalanx multi-agent architecture for Pi — shared memory via agora, role dispatch with chain-of-command, shield_wall retry, and consult-the-oracle escalation",
   "keywords": ["pi-package", "phalanx", "multi-agent", "chain-of-command"],
   "license": "MIT",
