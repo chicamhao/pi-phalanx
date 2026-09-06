@@ -1,6 +1,6 @@
 ---
 name: phalanx-oracle
-description: Escalate to the oracle (the user) when the objective is ambiguous or retries are exhausted. Uses consult_the_oracle to present structured, interactive TUI questionnaires — do not ask in plain text.
+description: Escalate to the oracle (the user) when the objective is ambiguous or retries are exhausted. Uses the native ask_user_question tool — no extension needed.
 ---
 
 # Oracle (escalation)
@@ -19,11 +19,10 @@ The **oracle** is the user. It sits outside the chain of command. Only the strat
 
 ## How
 
-Always use the `consult_the_oracle` tool — never ask in plain text. It opens an
-interactive TUI questionnaire and returns structured answers you can feed into
-`agora` and downstream dispatches.
+Always use the native `ask_user_question` tool — never ask in plain text. It opens
+an interactive TUI questionnaire and returns structured answers.
 
-### Tool schema
+### Tool schema (what you send)
 
 ```typescript
 {
@@ -33,19 +32,18 @@ interactive TUI questionnaire and returns structured answers you can feed into
     options: Array<{
       label: string;        // 1–5 words, returned as the answer
       description?: string; // Optional hint shown below label
+      preview?: string;     // Optional markdown rendered in side-by-side pane
     }>;                     // 2–4 options
     multiSelect: boolean;   // true = checkboxes, false = single pick
   }>;                       // 1–4 questions
 }
 ```
 
-### Result shape
+### Result shape (what you receive)
 
 ```typescript
 {
   answers: Record<string, string>,  // question text → selected label(s)
-                                     // multi-select: "Label A, Label B"
-                                     // free-text: raw typed string
   cancelled: boolean
 }
 ```
@@ -57,15 +55,30 @@ interactive TUI questionnaire and returns structured answers you can feed into
 3. **multiSelect: true** when multiple answers are valid simultaneously.
 4. **Concise labels** — 1–5 words. Descriptions carry nuance.
 5. **Header ≤ 16 chars** — tab bar label.
-6. **Never add "Other" or "Type something" options** — a free-text row is
-   appended automatically on every question.
+6. **Never add "Other" or "Type something" options** — the tool appends a
+   free-text row automatically.
 7. **Write answers to agora** — so downstream dispatches inherit the decisions.
 8. **If cancelled**, treat as a halt — do not re-ask the same questions.
 
+### Key bindings
+
+| Key | Context | Effect |
+|-----|---------|--------|
+| `↑` `↓` | Options list | Move cursor |
+| `Enter` | Single-select option | Confirm selection |
+| `Space` | Checkbox option | Toggle selection |
+| `Enter` | Multi-select (with selection) | Confirm |
+| `Space` or `Tab` | "Type something..." row | Open inline editor |
+| `Enter` | Editor (with text) | Save and close |
+| `Esc` | Editor | Discard and close |
+| `←` `→` | Multi-question tab bar | Switch tabs |
+| `Enter` | Submit tab (all answered) | Submit all answers |
+| `Esc` | Anywhere | Cancel entire questionnaire |
+
 ## Rules
 
-- `consult_the_oracle` — ask via this tool; do not re-dispatch the same scope.
+- `consult_the_oracle` — ask via `ask_user_question`; do not re-dispatch the same
+  failing scope.
 - Keep interruptions rare: resolve everything resolvable first, then ask once
   with clear, decision-ready questions.
-- The oracle is the only built-in mechanism for structured user interaction
-  within phalanx — it replaces the native `ask_user_question` tool.
+- No external extension required — `ask_user_question` is built into pi.
