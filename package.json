@@ -1,0 +1,22 @@
+{
+  "name": "@chicamhao/pi-phalanx",
+  "version": "0.1.0",
+  "description": "Phalanx multi-agent architecture for Pi — shared memory via agora, role dispatch with chain-of-command, shield_wall retry, and consult-the-oracle escalation",
+  "keywords": ["pi-package", "phalanx", "multi-agent", "chain-of-command"],
+  "license": "MIT",
+  "author": "pi.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/earendil-works/phalanx.git"
+  },
+  "main": ".pi/extensions/phalanx/index.ts",
+  "pi": {
+    "extensions": [".pi/extensions/phalanx"],
+    "skills": [".pi/skills"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  }
+}

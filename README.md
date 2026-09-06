@@ -1,6 +1,12 @@
 # Phalanx 
 
-The military-themed subagent architecture built for [Pi](https://pi.dev).
+Multi-agent subagent architecture for [Pi](https://pi.dev) — shared memory via
+agora, role dispatch with chain-of-command, shield_wall retry, and
+consult-the-oracle escalation.
+
+```
+pi install npm:@chicamhao/pi-phalanx
+```
 
 <img width="1402" height="1122" alt="image" src="https://github.com/user-attachments/assets/967b7081-c0ce-4fc2-8b31-a9d36276d807" />
 
@@ -50,9 +56,22 @@ The **strategos** (the main session) loads these skill files as needed and
 applies their instructions. You never install or enable skills — they are just
 markdown files that describe how to use the extension's tools.
 
+## Use in your own project
+
+1. **Install the package in your project dir:**
+
+   ```
+   pi install npm:@chicamhao/pi-phalanx
+   ```
+
+2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
+
 ## File layout
 
 ```
+├── package.json                     # Pi package manifest
 ├── conventions.yaml                 # Code style, git, file conventions (loaded by lochagos-work/build)
 ├── phalanx-architecture.yaml        # Roles, tiers, rules, extend templates
 ├── .pi/
