@@ -3,7 +3,7 @@
 Command the phalanx — multi-agent dispatch for [Pi](https://pi.dev) with shared memory (agora), chain-of-command, shield_wall retry, and consult-the-oracle escalation.
 
 ```
-pi install npm:@chicamhao/pi-phalanx
+pi install npm:pi-phalanx
 ```
 
 <img width="1402" height="1122" alt="image" src="https://github.com/user-attachments/assets/967b7081-c0ce-4fc2-8b31-a9d36276d807" />
@@ -59,7 +59,7 @@ markdown files that describe how to use the extension's tools.
 1. **Install the package in your project dir:**
 
    ```
-   pi install npm:@chicamhao/pi-phalanx
+   pi install npm:pi-phalanx
    ```
 
 2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
