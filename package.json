@@ -7,7 +7,7 @@
   "author": "pi.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/earendil-works/phalanx.git"
+    "url": "git+https://github.com/chicamhao/pi-phalanx.git"
   },
   "main": ".pi/extensions/phalanx/index.ts",
   "pi": {
