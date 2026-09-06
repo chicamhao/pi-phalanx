@@ -1,8 +1,6 @@
 # Phalanx 
 
-Multi-agent subagent architecture for [Pi](https://pi.dev) — shared memory via
-agora, role dispatch with chain-of-command, shield_wall retry, and
-consult-the-oracle escalation.
+Command the phalanx — multi-agent dispatch for [Pi](https://pi.dev) with shared memory (agora), chain-of-command, shield_wall retry, and consult-the-oracle escalation.
 
 ```
 pi install npm:@chicamhao/pi-phalanx
