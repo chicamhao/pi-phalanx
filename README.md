@@ -20,7 +20,7 @@ Command the Phalanx — a council of agents for [Pi](https://pi.dev), bound by t
 1. **Install the package in your project dir:**
 
    ```
-   pi install npm:@chicamhao/pi-phalanx
+   pi install npm:pi-phalanx
    ```
 
 2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
