@@ -1,13 +1,6 @@
-# Phalanx 
-
 Command the phalanx — multi-agent dispatch for [Pi](https://pi.dev) with shared memory (agora), chain-of-command, shield_wall retry, and consult-the-oracle escalation.
 
-```
-pi install npm:pi-phalanx
-```
-
 <img width="1402" height="1122" alt="image" src="https://github.com/user-attachments/assets/967b7081-c0ce-4fc2-8b31-a9d36276d807" />
-
 
 ## Rules
 
@@ -20,18 +13,24 @@ pi install npm:pi-phalanx
 | `single_state` | No private state; all reads/writes go through agora |
 | `concise_output` | Extremely concise output — no preamble or narration |
 
+## User manual
+
+1. **Install the package in your project dir:**
+
+   ```
+   pi install npm:@chicamhao/pi-phalanx
+   ```
+
+2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
+
+
 ## Commands
 
 - `/phalanx-muster` — one-line status: agora key/log count, token cost & usage since the last start, and elapsed time
 - `/phalanx-reform` — reset agora runtime state (keys, messages, log, attempts)
 - `/phalanx-arrange` — read `phalanx-architecture.yaml` and auto-create missing agent (`.pi/agents/*.md`) files
-
-## How to use
-
-1. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
-2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
-3. **Copy `.pi/`** into your project root
-4. **Start a Pi session** -> `/phalanx-arrange` -> `/reload`. The strategos loads automatically and the phalanx handles the rest
 
 ## How it works
 
@@ -66,6 +65,7 @@ markdown files that describe how to use the extension's tools.
 3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
 4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
 
+
 ## File layout
 
 ```
@@ -79,5 +79,3 @@ markdown files that describe how to use the extension's tools.
 │   ├── skills/phalanx-*/SKILL.md    # Skill instructions (loaded on demand)
 │   └── phalanx/agora.json           # Runtime shared memory (gitignored)
 ```
-
-⚠️ The content and scripts in this project are AI-generated and may contain errors or inaccuracies.
