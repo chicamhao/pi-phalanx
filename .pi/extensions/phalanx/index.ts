@@ -369,7 +369,31 @@ export default function (pi: ExtensionAPI) {
         };
       }
 
-      const agent = findAgent(agents, agentName);
+      let agent = findAgent(agents, agentName);
+
+      // auto-create agent file for known roles on first dispatch
+      if (!agent) {
+        const agentsDir = path.join(ctx.cwd, CONFIG_DIR_NAME, "agents");
+        let template: string | null = null;
+
+        if (agentName === "psiloi") {
+          template = PSILOI_AGENT_TEMPLATE;
+        } else if (isLochagosAgent(agentName)) {
+          const domain = agentName.slice("lochagos-".length);
+          const instances = arch.roles.lochagos?.instances ?? [];
+          if (instances.includes(domain)) {
+            template = generateLochagosAgentFile(domain);
+          }
+        }
+
+        if (template) {
+          fs.mkdirSync(agentsDir, { recursive: true });
+          fs.writeFileSync(path.join(agentsDir, `${agentName}.md`), template, "utf-8");
+          const refreshed = discoverAgents(ctx.cwd);
+          agent = findAgent(refreshed, agentName) ?? null;
+        }
+      }
+
       if (!agent) {
         const hint = isLochagosAgent(agentName)
           ? " Specify a domain, e.g. " + (arch.roles.lochagos?.instances ?? []).map((i) => `lochagos-${i}`).join(", ") + "."
