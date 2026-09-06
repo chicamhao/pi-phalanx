@@ -1,5 +1,3 @@
-⚠️ The content and scripts in this project are AI-generated and may contain errors or inaccuracies.
-
 # Phalanx 
 
 The military-themed subagent architecture built for [Pi](https://pi.dev).
@@ -24,7 +22,15 @@ The military-themed subagent architecture built for [Pi](https://pi.dev).
 - `/phalanx-reform` — reset agora runtime state (keys, messages, log, attempts)
 - `/phalanx-arrange` — read `phalanx-architecture.yaml` and auto-create missing agent (`.pi/agents/*.md`) files
 
-## How extensions & skills work
+## How to use
+
+0.1. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+0.2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+1. **Copy `.pi/`** into your project root
+3. **Start a Pi session** -> `/phalanx-arrange` -> `/reload`
+4.  the strategos loads automatically and the phalanx handles the rest
+
+## How it works
 
 The **extension** provides the infrastructure — the `agora`, `phalanx_dispatch`,
 and `phalanx_status` tools, plus `/phalanx` commands.
@@ -45,13 +51,6 @@ The **strategos** (the main session) loads these skill files as needed and
 applies their instructions. You never install or enable skills — they are just
 markdown files that describe how to use the extension's tools.
 
-## Use in your own project
-
-0. (Optional) **update `phalanx-architecture.yaml`** — to define new custom roles, rules, deployment scope
-1. **Copy `.pi/`** into your project root
-2. **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
-3. **Start a Pi session** — the strategos loads automatically and the phalanx handles the rest
-
 ## File layout
 
 ```
@@ -64,3 +63,5 @@ markdown files that describe how to use the extension's tools.
 │   ├── skills/phalanx-*/SKILL.md    # Skill instructions (loaded on demand)
 │   └── phalanx/agora.json           # Runtime shared memory (gitignored)
 ```
+
+⚠️ The content and scripts in this project are AI-generated and may contain errors or inaccuracies.
