@@ -49,13 +49,13 @@ markdown files that describe how to use the extension's tools.
 
 0. (Optional) **update `phalanx-architecture.yaml`** — to define new custom roles, rules, deployment scope
 1. **Copy `.pi/`** into your project root
-2. **Create `CONVENTIONS.yaml`** in your project root — code style (see this repo's copy as a template)
+2. **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
 3. **Start a Pi session** — the strategos loads automatically and the phalanx handles the rest
 
 ## File layout
 
 ```
-├── CONVENTIONS.yaml                 # Code style, git, file conventions (loaded by lochagos-work/build)
+├── conventions.yaml                 # Code style, git, file conventions (loaded by lochagos-work/build)
 ├── phalanx-architecture.yaml        # Roles, tiers, rules, extend templates
 ├── .pi/
 │   ├── agent/AGENTS.md              # Strategos system prompt (overrides global)
