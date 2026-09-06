@@ -10,6 +10,7 @@
  *                      shield_wall retry (with an optional escalation model),
  *                      and consult_the_oracle escalation
  *     phalanx_status   inspect roles, rules, agents, and agora state
+ *     consult_the_oracle  ask the user 1–4 structured questions in the TUI
  *   commands:
  *     /phalanx-muster    summary: roles, agora state, token cost, elapsed time
  *     /phalanx-reform    clear agora runtime state
@@ -32,6 +33,9 @@ import {
 import { AgoraStore } from "./agora.ts";
 import { discoverAgents, findAgent, formatAgentList, type AgentConfig } from "./agents.ts";
 import { runSubagent, type DispatchResult } from "./dispatch.ts";
+import { OracleComponent } from "./oracle/component.ts";
+import { InputSchema, type Question, type Result } from "./oracle/schema.ts";
+import { registerConsultTheOracle } from "./oracle/register.ts";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -524,6 +528,11 @@ export default function (pi: ExtensionAPI) {
       return text(lines.join("\n"));
     },
   });
+
+  // -------------------------------------------------------------------------
+  // consult_the_oracle tool (registered via oracle/register.ts)
+  // -------------------------------------------------------------------------
+  registerConsultTheOracle(pi);
 
   // -------------------------------------------------------------------------
   // commands
