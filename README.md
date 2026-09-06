@@ -53,6 +53,19 @@ The **strategos** (the main session) loads these skill files as needed and
 applies their instructions. You never install or enable skills — they are just
 markdown files that describe how to use the extension's tools.
 
+## Use in your own project
+
+1. **Install the package in your project dir:**
+
+   ```
+   pi install npm:pi-phalanx
+   ```
+
+2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
+
+
 ## File layout
 
 ```
