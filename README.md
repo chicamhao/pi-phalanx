@@ -13,18 +13,24 @@ Command the phalanx — multi-agent dispatch for [Pi](https://pi.dev) with share
 | `single_state` | No private state; all reads/writes go through agora |
 | `concise_output` | Extremely concise output — no preamble or narration |
 
+## User manual
+
+1. **Install the package in your project dir:**
+
+   ```
+   pi install npm:@chicamhao/pi-phalanx
+   ```
+
+2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
+3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
+4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
+
+
 ## Commands
 
 - `/phalanx-muster` — one-line status: agora key/log count, token cost & usage since the last start, and elapsed time
 - `/phalanx-reform` — reset agora runtime state (keys, messages, log, attempts)
 - `/phalanx-arrange` — read `phalanx-architecture.yaml` and auto-create missing agent (`.pi/agents/*.md`) files
-
-## How to use
-
-1. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
-2. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
-3. **Copy `.pi/`** into your project root
-4. **Start a Pi session** -> `/phalanx-arrange` -> `/reload`. The strategos loads automatically and the phalanx handles the rest
 
 ## How it works
 
@@ -46,18 +52,6 @@ Each skill file teaches the agent how to handle a specific job:
 The **strategos** (the main session) loads these skill files as needed and
 applies their instructions. You never install or enable skills — they are just
 markdown files that describe how to use the extension's tools.
-
-## Use in your own project
-
-1. **Install the package in your project dir:**
-
-   ```
-   pi install npm:@chicamhao/pi-phalanx
-   ```
-
-2. (Optional) **update `phalanx-architecture.yaml`** to define new custom roles, rules, deployment scope.
-3. (Optional) **Create `conventions.yaml`** in your project root — code style (see this repo's copy as a template)
-4. **Start a Pi session** → `/phalanx-arrange` → `/reload`. The strategos loads automatically and the phalanx handles the rest
 
 ## File layout
 
